@@ -1,0 +1,6 @@
+Notes for further modding Metachess
+
+MetaAction:
+locks means that the action locks the player for the rest of the turn.
+When a metaaction is no longer active (MetaActionActivity) the metaaction is reverted on the next turn
+

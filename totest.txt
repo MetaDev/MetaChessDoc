@@ -1,0 +1,6 @@
+TOTEST
+
+
+-orthog movement
+
+-wordt er gecontroleerd wanneer een stuk over een fractie springt of deze bezet is?

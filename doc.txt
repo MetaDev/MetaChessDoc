@@ -1,0 +1,10 @@
+The editor classes + metaconstant + metamodels are used to initialise the various models and constants to make the game work
+the editor classes will also be used to later when a more extended gui is implemented, edit the models
+graphic classes are models that contain all graphical data
+render classes interact with opengl classes to draw all kinds of objects
+the action package contains: MetaAction, MetaActionRange, MetaActionActivity classes
+MetaAction: is a model for alle different actions a piece can make based on a certain input.
+MetaActionRange:  is a class that returns all tiles on which the a metaAction can be active
+MetaActionActivity: is class which returns if a metaAction is still active
+
+

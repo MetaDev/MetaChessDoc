@@ -1,0 +1,27 @@
+-uniform use of keys for all pieces, restrict to define different piece style inputs
+
+-allow multi MetaAction key mapping
+
+-option to turn off specatt's
+
+-check cooldown of metaAction
+
+-MetaAction is een sequentie van actions, zo kan je bijvoorbeeld "en passant" implementeren: 1tegel schuin naar voor en dan terug 
+a metaaction with cooldown 0 never locks
+
+movement and range is executed if the correct button is pressed or held
+a metaAction never lasts longer then it's cooldown
+
+the invidual doesn't win neither does the side win, it's the watcher/player/master that can win the game.
+The player who control the pieces are figurants, bystanders,...
+
+the watcher/player/master can be played by a unspecified number of individuals who all watch and then "vote" to make a move.
+They are together the watcher/player/master, they are the only one who can win the game of metachess
+
+the amount of lives is for the team, every team get's 16 lives,
+
+when leaving fractioned tiles the movement is stopped
+
+MetaActions:
+-change tileview
+-change movement range

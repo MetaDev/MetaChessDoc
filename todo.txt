@@ -1,0 +1,194 @@
+Coding
+general: implement as moba, with as much parameters as possible
+
+-ooit is een doc schrijven
+
+splis code:in pieceextended model staat te veel logica, dat moet allemaal in een andere klasse
+  
+find a better name for core-> axis
+-use gray only for the gray pawn
+-to implement specials:
+
+change movement booleans;
+implement the possibility to bind a metaAction to a tile
+only 1 metaAction can be applied per tile, if the metaAction is cooled down remove from tile, if another metaAction is activated on the tile remove previous.
+so keep 1 variabel metaaction in the tile.
+extend map of metaAction in piece model with not only cooldown but also actively affected tiles. 
+
+change maxrange,
+inversvert direction, 
+inverse hor dir,
+
+add gui: 
+-implement number+char and icon rendering (in a 8x8 grid)
+-make gui for numbers like, team-lives, active specials, mapped specials available for current piecetype(with icon), 
+curren abs turn/currnt abs fraction
++ GUI for decisions, active decisions + cooldown
+
+
+-implenteer dat eens de speler zo'n hoge fractioning bereikt dat het realtime wordt dat alles van cooldowns vermenigvuldigt wordt met minTurnTime
+Behalve voor de beweging deze heeft geen cooldown meer, maar dan moet ook een deel van de mapping van de keys verandert worden en dan moet hold niet 
+meer toegelaten zijn voor movement registratie;
+
+
+
+
+-in het kickstarter project laat iedereen stemmen door 1 euro te doneren voor een bepaalde uitbreiding van het prototype
+of 5 euro voor een server met het spel en die krijgen dan een account. Iemand die 7 of meer stemmen uitbrengt krijgt ook een account
+-dit account geldt op de site voor al mijn komende projecten
+
+
+-save board specific constants in a boardmodel
+-check if diag mov works correct
+-option to turn off specatt's
+
+
+-if something is implemented in todo and counts as a rule add to rules, this will be the base of manual
+-uniform use of keys for all pieces, restrict to define different piece style inputs
+-implement mouse control
+-implement change of piece with core(maybe keep in mind that different ways of switching piece should be possible eg nearest, strongest, furthest,...)
+-implement simple client/server
+-implement the watcher with a simple chess AI, the watcher only knows chess rules
+-implement simple turn based rythm music 
+-TEST!!!! let people play 1vs1, 2vs2, 4vs2, 1vs4,.... let them note what they think about the game how they would improve
+what they like/dislike about it,.... 
+
+-use the data from all the tests to implement a AI and keep iterating with the tests
+-gebruik eenn nondeterministic state machine voor de muziek en de AI
+-simple AI-> random + shortest path, follow
+-AI for The Two Players(chess engine)
+-GUI: shows remaining lives,  tile depth, tile fractioning/abs fractioning, specatt's ,..., show if move is already made, show how long you have to wait until next move
+
+-make simple single player, where with a working 1 vs CPU. begin met origin of war
+-the player can switch between peices (with it's core) not indefinetly
+
+-bass toon elke keer een beurt voorbij is, een beetje geluid in integreren
+
+-first multiplayer, with own server/client application (sync movement)
+
+-sync board changes (by specatt)
+
+-implement some simple game modes, to test gameplay:
+-1 vs 1, each has a "super"-piece, or a kind of switch between pieces is possible like fifa
+-2 vs 2
+-....-> maybe a setting GUI where all options for gamemodes are available to change?
+
+-recursive turn time, done. But due to the exponential increase decrease it becomes very fast unplayable, maybe changing the rules a bit? fraction the time by level and not by fraction
+
+-add the story to the game, try to finish this part, so that this can be used as prototype on the kickstarter project
+tell the story from the document until you reach the point where the piece discover their core
+hide this story within the moba, the story only becomes available when the grey pawn is caught, it's an implicit quest inside every moba session, like a red line(de rode draad), the grey pawn is very hard to find and even harder to catch
+Een core verliest al zijn geheugen als hij de continuiteit verlaat, daarom dat hij vecht tegen stukken en niet meer weet van waar hij komt, toon in soms existentiele vragen van de stukken om 
+te suggereren dat er meer is dan alleen de moba
+
+vervolg, nadat de stukken ontdekken dat ze hun kern van hun stuk kunnen verwijderen kiezen veel stukken ervoor om in continuiteit te leven en het eeuwige strijdveld van 
+metachess te verlaten, maar sommige kernen voelen zich avontuurlijk en willen hun bevrijder eren door de oorlog na te spelen:
+
+regels
+er zijn zoveel cores als er spelers zijn.
+Een stuk zonder core can niet gedood worden.
+Een core kan van stuk veranderen maar niet ongelimiteerd.
+stukken zonder core kunnen gecontroleerd worden door controlling entities, eenmaal per main cycle en ook slechts 1 stuk per main cycle.
+
+(moba)
+Game: Origin of War (there is none)
+Spel begint op main fraction
+Je moet proberen om zoveel mogelijk stukken te 'bevrijden' , van je eigen kleur, door samen met die stukken fractions te creeeren.
+In die fractions krijgen ze de mogelijkheid tot een eigen wil.
+Zodat als je wisselt van stuk je deze stukken ook kan gebruiken
+Specatt's worden geleerd door punten, punten kunnen verdiend worden door mekaar te doden.
+Het spel eindigt wanneer alle cores van 1 team vernietigt zijn.
+Een core heeft een zekere hoeveelheid levensenergie.
+als een core gedood wordt in een pion dan verliest het 1/8 van zijn levens, als het sterft in een paard 1/2 in een koning 1 leven.
+In de originele versie van origin of war heb je maar 1 leven
+
+
+(RPG part, implicit quest in every OoW session)
+Game: Search for Gray
+Het spel begint al op een zekere diepte. 
+Dit is de diepte net voor de continuiteit.
+Zo kan je steeds naar een hogere diepte gaan, overal zijn willekeurige lege stukken, verlaten door hun core.
+Specatt's worden geleerd door een in een stuk te wisselen die een bepaalde specatt beheerste.
+(hier start de impl quest, de hierboven beschreven game-modus wordt vrijgespeeld als de grijze pion is gevonden)
+De bedoeling is de grijze pion te vinden.
+ergens op een willekeurig tegel op een willekeurige, misschien nog niet bestaande, diepte. (geef een indicatie van waar hij is)
+
+
+
+
+extra:
+{
+-native analog controller support
+from a dream
+-extra pieces: dragon/snake (s-movement), fox (sneaky) ,...
+-maybe add a specatt like the ability to change into animals
+-design numeric GUI + Design gui icons
+-code mouse control, show possible moves with a cross on tile, if clicked on it the piece will move there
+-> this can bes used to play on the same computer, one player on the keyboard one with the mouse, mutliple screens, splitscreen like lego ps3?
+-recode queen and king control, such that they only move when a key is released, and diag mov is done when an appriopriate key is pressed while realeasing
+-inverse control: use numpad to move and numbers on keyboard for values
+recode the board
+-new implementation of the boardlogic
+-change floor implementation from recursive to iterative with arrays (a finite dimensional array) 
+example new code with arrays, I don't know if this is more efficient, but it surely makes easier code
+Object[][] test  = new Object[8][8];
+		test[1][2]=new Object[8][8];
+		((Object[][])test[1][2])[0][0]=1;
+-don't delete recursive implementation keep both-> recursive logic, iterative logic
+-to check if tile is occupied, don't save in a tile. 
+rather use an array of coordinates and an array of fractions for drawin. the recursive properties of the tiles will handle the movement
+}
+-finish special attacks
+
+-implement AI (finish)
+
+-> under here maybe not, keep meta chess a moba, implement new engine and write the rpg for that
+-start design rpg world (crude)
+
+-implement world (crude)
+
+-make world online (with own server/client code, optimize prvious implementation)
+
+-integrate flexible(variable) chess battle game inside world
+
+-refine world, add quest, npc's, buildings?, enemies (AI)
+
+-make a html5 client, to play the game in a browser
+
+-make an android app
+
+-effects:
+
+-camera effect (make a slow transition)
+-add shadow 
+-3D rendering?
+-3D viewing?
+
+Cleaning
+-duplicate code in controllers
+-make floor a singleton
+-test effecienty of both board implementations
+-tile shouldn't keep width and x, only the first size and it's absolute fraction and it's relative i and j pos
+-A piece also shouldn't save it's tile.
+
+
+New project
+
+MetaMonopoly
+
+*a pseudo-economy based 2d board game, this time it's an rpg.
+core principles: there are streets like in monopoly (cyclic) you can go from one street to another. 
+A player has a vehicle, this vehicle is the center of the rpg, it can be extended, upgraded, parts added,...
+every vehicle has it's own fuel and fuel is made out of basic products, that's where the economy is:
+a vehicle uses fuel, a station sells fuel, a station needs basic products, a mine mines basic products, a vehicle transports basic products to a station
+make it absurd, use psuedo-chemy in a pseudo-economy with vehicles based on pseudo-mechanics
+a player can own buildings that create revenues, explore uncharted terrain, build new streets, transport, race against other players,...
+
+
+*implement dot engine
+
+use bozels for physics (box2d)
+and lwjgl for graphics
+
+use the smilhelm world(triangle) for 3 factions
+use confuse for quests in the smilhelm story line

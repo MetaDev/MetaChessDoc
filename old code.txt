@@ -1,0 +1,79 @@
+public void render() {
+		// debug
+		// show Box2D shapes
+		// debugRenderer.render(world, camera.combined);
+
+		// No anti-aliasing yet.
+
+		// Good practice to clear screen before every frame
+		// Clear the color information.
+
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		glPushMatrix();
+		glLoadIdentity();
+
+		// setup camera
+
+		// (zoom in) scale to 1 tile in playerview
+		glScalef(Camera.getTileFraction(), Camera.getTileFraction(), 1);
+		// zoom out depending on nr of tiles allowed to see
+		glScalef((float) 1 / (2 * Camera.getNrOfTiles() + 1), (float) 1
+				/ (2 * Camera.getNrOfTiles() + 1), 1);
+		// scale width back to 1:1 ratio
+		float width = Display.getWidth();
+		float height = Display.getHeight();
+		float scalex=1;
+		if (width > height) {
+			scalex=width / height;
+			glScalef(height / width, 1, 1);
+		} else {
+			glScalef(1, width / height, 1);
+		}
+
+		// follow player
+		float centerx=(Display.getWidth()*scalex)/4;
+		float center = Camera.getNrOfTiles()
+				* ((BoardLogic.getBoard().getWidth()) / Camera.getTileFraction());
+		float temp = ((BoardLogic.getBoard().getWidth()) / Camera.getTileFraction())/2;
+		float tempx= temp;
+		
+		float tempy = temp;
+		glTranslatef(-Camera.getX() -tempx, -Camera.getY() -tempx, 0);
+		// center player
+		if (width > height) {
+			// glTranslatef(
+		} else {
+			// glTranslatef(
+		}
+
+		glBegin(GL_QUADS);
+
+		for (int i = 0; i < renderers.size(); i++) {
+			renderers.get(i).render();
+
+		}
+		glPopMatrix();
+		glEnd();
+		// draw UI
+		//keep 1:1 ratio
+		
+		glLoadIdentity();
+		//the ratio to transform the position
+		if (width > height) {
+			
+			glScalef(height / width, 1, 1);
+		} else {
+			
+			glScalef(1, width / height, 1);
+		}
+		glBegin(GL_QUADS);
+		
+		// guiRenderer.render();
+		RectangleRenderer.drawRectangle(0, 0, 20, 20, new org.lwjgl.util.Color(
+				1, 0, 0));
+		RectangleRenderer.drawRectangle(480*(scalex), 0, 20, 20,
+				new org.lwjgl.util.Color(1, 0, 0));
+		glEnd();
+
+	}

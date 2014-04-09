@@ -1,0 +1,42 @@
+a special attack is a convention between pieces, it's not an attack more just a special
+it is by no means bound to the game and they can be turned off
+
+a special attack counts as a move, a special attack applies to both sides (but can apply only on certain types), if both sides use the oppisit specatt then the effect is negated
+if they use the same it depends on the attack maybe nothing maybe strong
+
+in the rpg world, all special attack are generic and can only be learned by catching the grey pawn
+
+in the moba all specatts are available depending on your piece, generic specatt's are more expensive then specific specatts
+-> like a chain movement up,down,left or more specific the 'snake' leftup, rightup
+board specatt can apply only on your own tile, all neighbouring tiles, all sibling tiles,...
+
+only x specatt can be applied at a time, this x is different for different levels of specatts
+e.g. a level 0 can be applied as many times as you want, a level 3 only every 10 sec's, that's for switch specatt's (on or off)
+there not only different levels but also different types (switch, numerical, ...) and different ranges of application (own tile, all sibling tiles, ...)
+
+-slippery tile, move one or more tiles further then intended 
+-additive range, which means that range can be larger then 9 but also 9+5 by pressing both numbers
+-the piece should loose it's remaining movement if leaving a tile to another which has lower fraction, because of the difference in decision-time
+-> maybe this can be turned off with a very rare ability
+-(possiblity to have a shield that is positioned with position buttons so protects that side (maybe))
+-in a game different fractions can apply, this is a special attack of the pawn, only fraction's who are a power of 2 are allowed (rule)
+-each player can choose a type when beginning game, this can be changed to random by pawns 
+-type is visble even when on matching color tile, this can be turned off by only giving the core an opposite color for drawing
+-you have type invisibility (hide ornaments), you have total invisibility (hide ornaments and core)
+-(default, but the specatt can be to turn it off) hoover (1,2,3)(ignore fractioning tile for movement (if movement illegal move)(stay on same fractioning level))
+-change directions
+-invert(fake) color
+-promotion(or fake)
+-cloak
+-en passant
+-schuine aanval
+-allowed to make more (or less) movements in 1 turn
+-first move (beweeg 2 kotjes ipv 1)
+-aan en uitzetten vn schaduw voor een stuk
+-retreat (move away an x amount of tiles in a random direction) -> for the pawn and the king
+-the tiles you jump over can't be acces for 10 turn s -> horse
+-continuous movement over tiles
+
+
+specatts are divided by level for direction and range, some specatt's are level 0 which means that every piece can use them, some specatt's
+can even be called all the time, this makes them more like options
