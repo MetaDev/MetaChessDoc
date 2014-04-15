@@ -7,4 +7,13 @@ MetaAction: is a model for alle different actions a piece can make based on a ce
 MetaActionRange:  is a class that returns all tiles on which the a metaAction can be active
 MetaActionActivity: is class which returns if a metaAction is still active
 
+A MetaAction can be ranged or not, decided whether it has a MetaActionRange or not
+if ranged the MetaAction does not execute when it's activating conditions are met.
+It checks it's range it saves it on the board. if the a piece steps on the tile with the MetaAction saved on it, then this MetaAction is executed on the piece.
+Every MetaAction can only be activated once on a piece
+
+In a piece you have 2 lists of MetaAction 1 to note if the MetaAxtions are currently active on the model, an other to save if a cooldown is running
+for an EXECUTABLE MetaAction. So if a MetaAction is not in this list, this piece can't execute it himself. It can however be applied to it.
+That's saved in the other list which can contain any MetaAction
+
 

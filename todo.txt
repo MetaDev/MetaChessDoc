@@ -1,36 +1,68 @@
 Coding
+
+
 general: implement as moba, with as much parameters as possible
 
--ooit is een doc schrijven
 
-splis code:in pieceextended model staat te veel logica, dat moet allemaal in een andere klasse
-  
-find a better name for core-> axis
--use gray only for the gray pawn
--to implement specials:
 
-change movement booleans;
-implement the possibility to bind a metaAction to a tile
-only 1 metaAction can be applied per tile, if the metaAction is cooled down remove from tile, if another metaAction is activated on the tile remove previous.
-so keep 1 variabel metaaction in the tile.
-extend map of metaAction in piece model with not only cooldown but also actively affected tiles. 
 
-change maxrange,
-inversvert direction, 
-inverse hor dir,
 
-add gui: 
--implement number+char and icon rendering (in a 8x8 grid)
--make gui for numbers like, team-lives, active specials, mapped specials available for current piecetype(with icon), 
-curren abs turn/currnt abs fraction
-+ GUI for decisions, active decisions + cooldown
 
+-draw number icons for gui
+
+-render tiles like gui as a stack,also change the way a tile returns it's position, let it return it's position relative to the parent and not absolute
+
+-draw metaActions on tiles
+if it's a metaAction from your side, draw icon, else draw cooldown
+
+
+-implement that when 2 pieces of same color come on same tile-> fraction
+
+-when 2 pieces go "through" each other the tile where they meet is fractioned with a number that is as big as needed to complete the move
+and avoid collision eg they are on neighbour tiles and move in towards each other with 1 tile, the fraction is 2 tiles 
+they move toward each other with 3 tiles -> the fraction is 8 tiles always do roundtonearestpowerof2(2*tilesleft to move)
+-if 2 piece of opposite side come on same tile, delete
 
 -implenteer dat eens de speler zo'n hoge fractioning bereikt dat het realtime wordt dat alles van cooldowns vermenigvuldigt wordt met minTurnTime
 Behalve voor de beweging deze heeft geen cooldown meer, maar dan moet ook een deel van de mapping van de keys verandert worden en dan moet hold niet 
 meer toegelaten zijn voor movement registratie;
 
+-mogelijkheid tot switch pieces
+-simple working online multiplayer, using ip adresses
 
+add gui: 
+-make gui for numbers like, team-lives, active specials, mapped specials available for current piecetype(with icon), 
+curren abs turn/currnt abs fraction
+
+-test!!!!! with friends
+
+
+
++ GUI for decisions, active decisions + cooldown
+
+-finish gui
+
+-finish all metaActions:
+
+things like rangeup1, 2, 4,... will be 1 action rangeup but the variable will be changeable of course through points, points which will be given through achievements
+like: reaching the other side eg +2 points, killing a piece of x lives + 2*x points, finding the gray pawn +10 pointsn,.....
+
+
+-todo: griddrawer: save drawing, load drawing, edit nr of columns,rows
+
+
+-add UI to choose button config
+-ooit is een doc schrijven + maak van die doc een wiskundig manifesto waarin abstract alle regels van het spel beschreven staan
+
+-ipv alle constanten in MetaMapping te steken, sla ze op in een statisch dataacces klasse, voor ieder type constanten
+
+-in gui moet er een mogelijkheid zijn: fillGUI die de ruimte optimaal benut: zo veel mogelijk gui tiles toont in de gekregen guiruimte
+
+find a better name for core-> axis, better name MetaAction->decision
+-use gray only for the gray pawn, or everything that has nothing to do with "pure" chess, that is not bounded by the rules of chess!!!!->metactions
+-tileextendedmodel hier de logica opsplitsen
+
+splis code:in pieceextended model staat te veel logica, dat moet allemaal in een andere klasse
 
 
 -in het kickstarter project laat iedereen stemmen door 1 euro te doneren voor een bepaalde uitbreiding van het prototype
@@ -38,7 +70,7 @@ of 5 euro voor een server met het spel en die krijgen dan een account. Iemand di
 -dit account geldt op de site voor al mijn komende projecten
 
 
--save board specific constants in a boardmodel
+
 -check if diag mov works correct
 -option to turn off specatt's
 
@@ -173,6 +205,12 @@ Cleaning
 
 
 New project
+
+cRayOn
+
+alles wordt getekend met lijnen, kunst, maak zelf engine en gebruik wiskundige functies om alle dingen te tekenen en collsion checken,...
+een soort van kleurpotlood wereld, gebruik hiervoor opengl en 3d projectie net als in immersieve tech
+
 
 MetaMonopoly
 

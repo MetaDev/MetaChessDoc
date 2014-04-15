@@ -36,6 +36,7 @@ there not only different levels but also different types (switch, numerical, ...
 -retreat (move away an x amount of tiles in a random direction) -> for the pawn and the king
 -the tiles you jump over can't be acces for 10 turn s -> horse
 -continuous movement over tiles
+-confusion: disco fever: change opponent color mapping (randomly); mosquito: let a mosquito sound play when a piece comes to close of another player
 
 
 specatts are divided by level for direction and range, some specatt's are level 0 which means that every piece can use them, some specatt's
