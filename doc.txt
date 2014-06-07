@@ -16,4 +16,6 @@ In a piece you have 2 lists of MetaAction 1 to note if the MetaAxtions are curre
 for an EXECUTABLE MetaAction. So if a MetaAction is not in this list, this piece can't execute it himself. It can however be applied to it.
 That's saved in the other list which can contain any MetaAction
 
+numpad must be enabled to use it !! :)
+
 

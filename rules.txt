@@ -4,7 +4,6 @@
 
 -option to turn off specatt's
 
--check cooldown of metaAction
 
 -MetaAction is een sequentie van actions, zo kan je bijvoorbeeld "en passant" implementeren: 1tegel schuin naar voor en dan terug 
 a metaaction with cooldown 0 never locks
@@ -21,7 +20,63 @@ They are together the watcher/player/master, they are the only one who can win t
 the amount of lives is for the team, every team get's 16 lives,
 
 when leaving fractioned tiles the movement is stopped
+promotion is possible for pawn if a type is already gone, this doesn't add lives however
+
+If pawns form a certain formation, they'll enable more powerfull Decisions, combined power??
+
+a locking direction should only act once turn is over?????
 
 MetaActions:
 -change tileview
 -change movement range
+
+control:
+
+4 buttons for 4 directions (eg z q s d)
+buttons for range (eg numpad 1 2 4)
+buttons for decsions (eg 3 5 7 8 9 6)
+a button to inverse Decisions (eg i) this is a switch 
+Pressed Button combo's in temporal order, executed when last button is pressed
+-(range+)direction->movement with range in direction
+-(range+)decision(release of decision button)(+direction)->decision in direction with range, 
+unless no range is given, then the attack is done on oneself, and if no direction is given the decision is executed on release of key
+
+a game ends when the pawns have formed a symmetric shape on the upper fraction with a score higher than or equal 4 times the difference of pieces between the 2 sides.
+The highest possible shape-score is 32, 4 symetries 8 pieces so once one of both sides has more then 8 pieces of the other side, it can't when a game by symmetry anymore.
+Winning by symmetry
+
+when a piece is occupied by a core and it is taken. the team loses lives equal to the amount of lives of a piece. the core can choose the occupy a non-occupied piece of choice.
+when the king is killed (occupied by a core) the team loses, when the team has lost an equal to or more then 32 lives the game is over.
+
+If the winning team has cooldown left, because of an enourmous decision, the losing team has as much time as the largest cooldown, to still make a draw. this losing team has no lives.
+So it can't be killed.
+
+lives af a piece (for the moment):
+pawn 1
+knight 2
+bischop 4
+tower 4
+queen 8
+king 32
+
+nut van elk stuk:
+-met pionnen kan een symmetrische vorm gemaakt worden, pionnen kunnen ook van richting veranderen, maar enkel als ze zich niet op de hoogste fractie bevinden.
+richting veranderen kost een beurt.
+-koningin is het meest mobiele stuk, en heeft geen extra decisions.
+-De toren kan zijn tileview verhogen, de bischop kan zijn max movement range verhogen.
+-de koning is de enige die ranged decisions heeft. hij kan de tileview en maxrange van andere stukken beinvloeden.
+-het paard kan veranderen in een draak (met cooldown uiteraard), de draak doodt alle stukken waarboven het springt ook.
+tot 1 fraction diep. Dus als de draak boven een fractioned tile springt met stukken op, dan zijn die allemaal gedood.
+De paarden kunnen als enige over een hoger gefractioneerde tile springen. de andere stukken moeten erin stappen.
+
+alle tileviews zijn 8, alle maxmovement zijn ook 8. behalve voor pawn, koning en paard natuurlijk.
+
+
+for the moment there's no maximum decision.
+
+all possible decisions:
+-movement
+-tileview
+-maxrange
+-dragon
+-turn
