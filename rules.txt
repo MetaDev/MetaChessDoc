@@ -1,18 +1,17 @@
--uniform use of keys for all pieces, restrict to define different piece style inputs
+gui
+-cooldown of decision
+-positioning somehow or minimap
+-teamlives
+-range
+(-tileview)
+-maxrange
+-turn
 
--allow multi MetaAction key mapping
 
--option to turn off specatt's
-
+-the field is randomly fracioned
 
 -MetaAction is een sequentie van actions, zo kan je bijvoorbeeld "en passant" implementeren: 1tegel schuin naar voor en dan terug 
-a metaaction with cooldown 0 never locks
 
-movement and range is executed if the correct button is pressed or held
-a metaAction never lasts longer then it's cooldown
-
-the invidual doesn't win neither does the side win, it's the watcher/player/master that can win the game.
-The player who control the pieces are figurants, bystanders,...
 
 the watcher/player/master can be played by a unspecified number of individuals who all watch and then "vote" to make a move.
 They are together the watcher/player/master, they are the only one who can win the game of metachess
@@ -20,6 +19,7 @@ They are together the watcher/player/master, they are the only one who can win t
 the amount of lives is for the team, every team get's 16 lives,
 
 when leaving fractioned tiles the movement is stopped
+
 promotion is possible for pawn if a type is already gone, this doesn't add lives however
 
 If pawns form a certain formation, they'll enable more powerfull Decisions, combined power??
@@ -32,16 +32,9 @@ MetaActions:
 
 control:
 
-4 buttons for 4 directions (eg z q s d)
-buttons for range (eg numpad 1 2 4)
-buttons for decsions (eg 3 5 7 8 9 6)
-a button to inverse Decisions (eg i) this is a switch 
-Pressed Button combo's in temporal order, executed when last button is pressed
--(range+)direction->movement with range in direction
--(range+)decision(release of decision button)(+direction)->decision in direction with range, 
-unless no range is given, then the attack is done on oneself, and if no direction is given the decision is executed on release of key
+for every decision 1 button
 
-a game ends when the pawns have formed a symmetric shape on the upper fraction with a score higher than or equal 4 times the difference of pieces between the 2 sides.
+a game ends when the pawns have formed a symmetric shape on any tile fractioned by factor 8 with a score higher than or equal 4 times the difference of pieces between the 2 sides.
 The highest possible shape-score is 32, 4 symetries 8 pieces so once one of both sides has more then 8 pieces of the other side, it can't when a game by symmetry anymore.
 Winning by symmetry
 
@@ -60,7 +53,7 @@ queen 8
 king 32
 
 nut van elk stuk:
--met pionnen kan een symmetrische vorm gemaakt worden, pionnen kunnen ook van richting veranderen, maar enkel als ze zich niet op de hoogste fractie bevinden.
+-met pionnen kan een symmetrische vorm gemaakt worden niet enkel op main board maar elke tile met fractie 8, pionnen kunnen ook van richting veranderen, maar enkel als ze zich niet op de hoogste fractie bevinden.
 richting veranderen kost een beurt.
 -koningin is het meest mobiele stuk, en heeft geen extra decisions.
 -De toren kan zijn tileview verhogen, de bischop kan zijn max movement range verhogen.
@@ -75,8 +68,41 @@ alle tileviews zijn 8, alle maxmovement zijn ook 8. behalve voor pawn, koning en
 for the moment there's no maximum decision.
 
 all possible decisions:
--movement
+-movement, locks if not under lowest fraction
+//these decision can only be made on a fractioned tile
 -tileview
 -maxrange
--dragon
+-dragon, 50% chance of killing piece which you "fly" above. Because an L path can be taken in 2 ways first x then y or reverse
 -turn
+-switch, cooldown is calculated in the same way
+have cooldown
+
+on the main board/ lowest fraction standard chess rules apply so:
+-when after a turn on the main board no move is made , that side loses
+-if you can capture a piece on the main board, you have to, or you lose
+-pieces captured on the main-board are removed permanently from the game
+
+-piece captured on a lower fraction are returned on the first closest tile to your side
+
+
+the king can command the pawns, not launch them
+the influence of the king
+
+when switching a direction can be given. like up, then the algorythm search for the closest piece in that direction.
+If none is found nothing happens
+
+optional rules, to test:
+-influence of king: range/view or range or view for friend and foe?
+-When to fraction tiles, on some tile from same side or when to opposing pieces are in proximity, defraction when no piece occupies the fractioned tile?
+-fractioning can be done every time more than 2 pieces of opposite side stay on same parent tile for more than 8 turns
+random fracioning
+-de kleuren van de stukken zo laten? of schaduw geven? anders is onbezet stuk op zelfde kleur onzichtbar
+-concept van watcher: the invidual doesn't win neither does the side win, it's the watcher/player/master that can win the game.
+The player who control the pieces are figurants, bystanders,...
+-multiple skins, colors
+-what would be usefull info to display in GUI?
+-name of website: simpletition, metagames, meta, 
+-wordt de grijze pion, toegevoegd aan het spel als een soort "golem" die eenmaal gevangen een bonus geeft
+-de cooldown van switch, welke mode zou het duurste moeten zijn random, nearest, furthest, to piecetype
+
+

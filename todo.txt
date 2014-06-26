@@ -11,9 +11,43 @@ simple but highly parametric
 -send movement messages between several clients connected to server
 -simple client server
 -simple working online multiplayer, using ip adresses
+-refactoring decision mapping
+
+
+-todo
+-ooit nog is cooldown dubbelchecken
+-check if team makes a decision every main-turn
+-seperate piece logic and model
+-maak een set met locking decisions en een set van decision with cooldown, met daarin dan direct het gewicht vd cooldownS
+
+-pawn binding
+-implement completely the lowest fraction functionallity
+
+-back to networking
+multiple players of same team-> switching
+-every main turn, 1 non-controlled piece makes a random move. from each side
+-the pawn's around the king can only disconnect by voting, if the majority of the pawns choose for the same direction (choosing between up, upleft, down,...), they can make 1 liberating move
+-verhaal afschrijven
+-once beta is complete make site
+
+-for each piece unique mapping allowed
+-make sure that cooldown is proportioned to tile fracioning of the tile it's standing on
+-not a minimum turn -time will be enforced but a maximum fractioning of the turn-time, is about the same. this smallest fraction is of course not absolute
+but the turn -time won't be further fractioned, and movement becomes real-time.
+-the cooldown is saved in absolute amount of turns on the smalles fraction: formula: smallestfraction/fraction * turnsactive * range * weight
+-after every turn passed on the smallest fraction the cooldown is lowered
+-watch out for cooldown milking, that is that the player cools down on a low fraction and just before the turns change on the low fraction it goes up to a lower fraction
+to also collect this cooldwon. To counter this a cooldown is only reduced after a full turn on the same fraction, so after the second turnchange on the same fraction
+
+-create standard constructors for piece models
+
+-refactor renderers, use bitgrid instead of subclasses
+
 
 -when on lowest fraction and tileview is so high that all tiles can be seen, lower tileview so that just all tiles can be seen
 -when reaching a turn-time that is too small to play on ( min is 1/60 second, 1 game loop) change the game to real-time: don't lock anymore
+-keep in mind for an offline mode, to debug
+-there is only 1 range
 
 -settings gui: choose side, turn time, start game, join server...
 -implement that when 2 pieces of same color come on same tile-> fraction
@@ -58,9 +92,21 @@ remove ugly Method objects and work without enums for actions
 -map movement types to piece types
 -de bewegings acties uitbreiden met string, string gebruiken om de int[][] met directions op the halen, veel schaalbaarder
 
+-decision work ubt should be done better
+make a queue on which a detected decision is noted
+the piecemodel then clear this queue on every metaloop
+sketch this first before trying to change
+opsplitsen van bestaande code van makedecision bij player
+zodat het gemakkelijker is om multipayer decisions te maken
+
+
 -all piece types should work
 
-
+- een website met allemaal competitieve 2d spellen zoals metachess en andere. In die site zijn 3 reeksen, regular, amateur, professional. De amateur krijgt grafische customisatie van de kern
+, color mapping. Pro krijgt toegang tot training(confusion, visual, sound), bootcamp. also sponsor account: pay and manage teams of player. Every account has a different fee.
+Regular is free, amateur is the fee low so that when you play and win enough you can pay for it. Pro you have to play a lot or pay. Sponsor always has to pay
+naam: www.aregameswith.tk  -> betekenis: where, where, where are games with telekenisis.
+op deze website zullen deze spellen nooit veranderen. alleen de parameters binnen de spellen kunnen wijzigen om de gameplay haarfijn af te stellenS
 
 
 -to implement mouse control: cast mouse x and y to an i and j in the tileview, us this i and j to "move" from the player's tile to the pointed tile
