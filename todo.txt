@@ -18,18 +18,22 @@ simple but highly parametric
 -ooit nog is cooldown dubbelchecken
 -check if team makes a decision every main-turn
 -seperate piece logic and model
--maak een set met locking decisions en een set van decision with cooldown, met daarin dan direct het gewicht vd cooldownS
 
--pawn binding
--implement completely the lowest fraction functionallity
+
+-test completely the lowest fraction functionallity
+-test pawn binding, change appearance of pawn after binding
+
 
 -back to networking
+-player functionality, killing, switching
+-complete gui
 multiple players of same team-> switching
--every main turn, 1 non-controlled piece makes a random move. from each side
--the pawn's around the king can only disconnect by voting, if the majority of the pawns choose for the same direction (choosing between up, upleft, down,...), they can make 1 liberating move
--verhaal afschrijven
--once beta is complete make site
 
+-verhaal afschrijven
+-test first round, all funcionality
+-test second round performance and gameplay, games has to be downloadable from site
+-once beta is complete make site
+-maybe create a static mapping with piecetype and side to piece models
 -for each piece unique mapping allowed
 -make sure that cooldown is proportioned to tile fracioning of the tile it's standing on
 -not a minimum turn -time will be enforced but a maximum fractioning of the turn-time, is about the same. this smallest fraction is of course not absolute

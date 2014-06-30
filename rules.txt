@@ -5,18 +5,19 @@ gui
 -range
 (-tileview)
 -maxrange
--turn
+-turn(pawn)
+-balance(king)
+-absolute fraction of position tile
+-cooldown of switch
 
+-the field is randomly fractioned
 
--the field is randomly fracioned
-
--MetaAction is een sequentie van actions, zo kan je bijvoorbeeld "en passant" implementeren: 1tegel schuin naar voor en dan terug 
 
 
 the watcher/player/master can be played by a unspecified number of individuals who all watch and then "vote" to make a move.
 They are together the watcher/player/master, they are the only one who can win the game of metachess
 
-the amount of lives is for the team, every team get's 16 lives,
+the amount of lives is for the team, every team get's X lives,
 
 when leaving fractioned tiles the movement is stopped
 
@@ -104,5 +105,12 @@ The player who control the pieces are figurants, bystanders,...
 -name of website: simpletition, metagames, meta, 
 -wordt de grijze pion, toegevoegd aan het spel als een soort "golem" die eenmaal gevangen een bonus geeft
 -de cooldown van switch, welke mode zou het duurste moeten zijn random, nearest, furthest, to piecetype
+-wat te doen met de koning, knight en pawn en hun range?
+-opties: koning: range bepaald balance van influence, range bepaald richting van afgeschoten pionnen(bewegen 1 tegel per gekozen beurt)
+knight: aantal rijen dat geraakt worden door dragon, verhoogt uiteraard ook cooldown, aantal richtingen het overslaat bij het draaien
+-rotate pawns around king as a shield, rang is then the number for the direction of the head of the "sbake" shield
+-every main turn, 1 non-controlled piece makes a random move. from each side
+-watcher with voted decision?
+
 
 
