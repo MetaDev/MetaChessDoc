@@ -1,0 +1,64 @@
+Network coding:
+
+NOTE: closing printwriter or bufferedreader of a socket causes the socket to close
+we keep the tcp alive as long as possible, should it disconnect, then the server ignores this error and the client tries to reconnect
+all closing is done after the tcp connection
+
+
+The most simple solution I can give you is:
+
+Use TCP sockets so you do not have to handle packet loss.
+When the game state changes on the server, propagate the state to all clients. Do this in something which does not take a lot of room. An example would be to communicate small packets as follows ENTITY NUMBER - NEW POSITION. (i.e. two 32-bit integer). When you need to communicate multiple updates at once, make sure they are contained in the same TCP packet, and that the TCP send buffer is immediately flushed on both ends.
+Forget all the timing issues you will face when dealing with clients with a round-trip (ping) time of 400ms and beyond. If required, you can transform the packet like this: ENTITY NUMBER - NEW POSITION - CURRENT SPEED VECTOR which will allow the client to estimate the entity position including lag delay.
+
+question: does the serversocket have to be closed?
+how can I guarantee that the serverport is closed
+
+client networking in different thread?
+
+restart server if stopping of it wasn't the intention
+
+dumb server
+
+
+The system clock should be equal on all pc's see doc of System.getTimeMillis()
+So this won't be synced
+
+the initial state is on every client the same so only changes have to communicated
+
+In the game loop there will be checked for packages to receive
+
+a method send(par) should be implemented to send the message to the server
+every time the board changes, add message to queue
+then in the loop the whole queue will be sent
+
+todo: 
+
+-implement message send on change from and to server with multiple registered clients
+
+-translate string message into method call
+
+messages:
+//contacting server
+-hello
+//server response
+-welcome::clientid
+	welcome::3
+//client is ready to begin
+-ready
+//all connected are ready
+//the client is assaigned an initial (random) pawn piece
+-start::clientid::clientposition::player2id::player2position::...
+	start::3::[x][y]::4::[x1][y1]::...
+//in-game change messages
+-clientid::decision;fromx;fromy;range;direction
+	3::tileview;[x1,x2,x3,...];[y1,y2,y3,...];5;UP <<<----- this doesn't have to be sent, you don't have to know other players tileview, same with range, maxrange
+	6::dragon;[x1,x2,x3,...];[y1,y2,y3,...];0;none
+	2::movement;[x1,x2,x3,...];[y1,y2,y3,...];6;UPLEFT
+	1::switch;[x1,x2,x3,...];[y1,y2,y3,...];0;none
+	
+
+
+consequences of a piece moved: killed opponent, fractioning of tile on board, ... is handled by client
+
+implement message quarantain and reverse when inconsistency arises
