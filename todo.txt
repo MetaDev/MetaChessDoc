@@ -20,13 +20,32 @@ simple but highly parametric
 -seperate piece logic and model
 
 
--test completely the lowest fraction functionallity
--test pawn binding, change appearance of pawn after binding
 
+-pawn movement WIP, check if all funcionality of pieces works
+
+-cooldown is nog steeds soms verkeerd
+-tile enter mapping is not correct for -> to lower fraction
+-test
+<-------------
 
 -back to networking
--player functionality, killing, switching
--complete gui
+
+-multtiple player functionality, killing, switching
+-when killing piece check if occupied by other player
+-test
+-codecheck, codeclean, small refactoring, still to be decided which
+-dynamic gui implemnts recursive refresh method that will be called after every time a decision is made or turn changes
+-test
+-buttonmapping with config files
+-draw grid for letters and numbers
+-activate special decision once on lower fractions
+-implement king command
+-implement bischop rogue
+-gui: basic: turn, balance, absfraction, cooldown of decision and switch(every piece can make 1 special decision and a switch),
+-remove string mapping of arrays, use arrays. tostring method
+-cache absfraction, absposition ,.. in tile
+-load all icons in the res file automaticallt
+
 multiple players of same team-> switching
 
 -verhaal afschrijven

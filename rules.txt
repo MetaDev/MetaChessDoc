@@ -5,13 +5,17 @@ gui
 -range
 (-tileview)
 -maxrange
--turn(pawn)
+-rotation(pawn)
 -balance(king)
 -absolute fraction of position tile
 -cooldown of switch
+-buttonmapping of allowed movement
+-piece type
+-if the player is influenced by the king
 
 -the field is randomly fractioned
 
+-always place bischops on opposite color tile, or else the hidetype would be of no use
 
 
 the watcher/player/master can be played by a unspecified number of individuals who all watch and then "vote" to make a move.
@@ -57,12 +61,14 @@ nut van elk stuk:
 -met pionnen kan een symmetrische vorm gemaakt worden niet enkel op main board maar elke tile met fractie 8, pionnen kunnen ook van richting veranderen, maar enkel als ze zich niet op de hoogste fractie bevinden.
 richting veranderen kost een beurt.
 -koningin is het meest mobiele stuk, en heeft geen extra decisions.
--De toren kan zijn tileview verhogen, de bischop kan zijn max movement range verhogen.
--de koning is de enige die ranged decisions heeft. hij kan de tileview en maxrange van andere stukken beinvloeden.
+-De toren kan zijn tileview verdubbelen, 
+-de bischop go rogue, verbergt type kan over andere stukken gaan maar kan er geen doden, als een beweging zou landen op een ander stuk is deze illegaal,
+eventueel ook hoover hieraan toevoegen
+-de koning heeft influence, kan pionnen aan zich binden en kan ze daarna commanderen om aan te vallen
 -het paard kan veranderen in een draak (met cooldown uiteraard), de draak doodt alle stukken waarboven het springt ook.
 tot 1 fraction diep. Dus als de draak boven een fractioned tile springt met stukken op, dan zijn die allemaal gedood.
 De paarden kunnen als enige over een hoger gefractioneerde tile springen. de andere stukken moeten erin stappen.
-
+-
 alle tileviews zijn 8, alle maxmovement zijn ook 8. behalve voor pawn, koning en paard natuurlijk.
 
 
@@ -71,9 +77,11 @@ for the moment there's no maximum decision.
 all possible decisions:
 -movement, locks if not under lowest fraction
 //these decision can only be made on a fractioned tile
--tileview
--maxrange
--dragon, 50% chance of killing piece which you "fly" above. Because an L path can be taken in 2 ways first x then y or reverse
+-Peer to horizon (double tileview)
+-Go rogue (hide type, move over other pieces but can't kill them) if leaving rogue when on another piece you're killed
+-Troops attaack (bound pawns move 8 tiles if possible in their direction)
+-(maxrange)
+-dragon, kills piece 1 fraction deep on the tile the knight changes direction, this tile is chosen randomly
 -turn
 -switch, cooldown is calculated in the same way
 have cooldown
@@ -111,6 +119,14 @@ knight: aantal rijen dat geraakt worden door dragon, verhoogt uiteraard ook cool
 -rotate pawns around king as a shield, rang is then the number for the direction of the head of the "sbake" shield
 -every main turn, 1 non-controlled piece makes a random move. from each side
 -watcher with voted decision?
-
-
-
+-when can pieces be deleted? always? or only on main board
+-is het nodig om nominaal de view en range van de bischop en rook te verhogen of best met 1 knop de range verdubbelen
+-of bisschop mag dubbele decisions nemen?->bischop kan met een even aantal tegels recht vooruit in 1 beurt lopen
+-cooldown afschaffen en ipv daarvan enkel locken ?
+-niet-random implementatie dragon?
+-king special decision: command or shield(roteren van wall)?
+-how many pieces can be killed when a dragon hoovers over a fractioned tile occupied by multiple peices
+-show timeturn onto piece
+-change decision weight with range?
+-numpad movement for horse (7=/-+324-)
+-random possible type hiding for bischops? or or place bisschops always on opposite tile?
