@@ -12,7 +12,9 @@ gui
 -buttonmapping of allowed movement
 -piece type
 -if the player is influenced by the king
+-show the character of the button that should be pressed on the tile it will lead to
 
+-gui: basic: turn, balance, absfraction, cooldown of decision and switch(every piece can make 1 special decision and a switch),
 -the field is randomly fractioned
 
 -always place bischops on opposite color tile, or else the hidetype would be of no use
@@ -100,6 +102,10 @@ the influence of the king
 when switching a direction can be given. like up, then the algorythm search for the closest piece in that direction.
 If none is found nothing happens
 
+-watch out for cooldown milking, that is that the player cools down on a low fraction and just before the turns change on the low fraction it goes up to a lower fraction
+to also collect this cooldwon. To counter this a cooldown is only reduced after a full turn on the same fraction, so after the second turnchange on the same fraction
+
+
 optional rules, to test:
 -influence of king: range/view or range or view for friend and foe?
 -When to fraction tiles, on some tile from same side or when to opposing pieces are in proximity, defraction when no piece occupies the fractioned tile?
@@ -130,3 +136,4 @@ knight: aantal rijen dat geraakt worden door dragon, verhoogt uiteraard ook cool
 -change decision weight with range?
 -numpad movement for horse (7=/-+324-)
 -random possible type hiding for bischops? or or place bisschops always on opposite tile?
+-should all pieces always be present in the game in the beginning? or can be pieces randomly be deleted

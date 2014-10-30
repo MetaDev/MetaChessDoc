@@ -1,0 +1,89 @@
+Controls
+-------------------------------
+
+a move can only be made when it's your turn
+this is shown right with a bar, vertical means your turn
+
+King,Rook,Queen
+DOWN:S
+LEFT:Q
+RIGHT:D
+
+King,Rook,Queen,Pawn (pawn can only move up)
+UP:Z
+
+King,Queen,Bischop
+UPLEFT:A
+UPRIGHT:E
+DOWNLEFT:W
+DOWNRIGHT:C
+
+Knight controls, L-UPLEFT12 means move 1 tile horizontally and 2 tiles vertically
+L-UPLEFT12:Z
+L-UPLEFT21:Q
+L-UPRIGHT12:R
+L-UPRIGHT21:G
+L-DOWNRIGHT12:C
+L-DOWNRIGHT21:F
+L-DOWNLEFT12:X
+L-DOWNLEFT21:S
+
+Special moves
+------------
+
+change amount of tiles made with movement: numpad 1,2,3,4,5,6
+range is default 1
+range is additive: holding numpad 1 and 3 results in : 1 + 1 + 3 = 5 range
+
+when a king moves onto a pawn of it's own side the pawn is bound to the king and moves with it as a defending wall
+to remove a pawn from the wall a player has to take back control
+
+pressing 0 on the numpad moves the player to another piece
+
+Piece specific moves
+---------
+
+these are activated by holding the space bar, they have a cooldown equal to number of turns active but relative to tile fraction
+
+Pawn: Turn, change direction of pawn which makes it possible to move in 4 orthogonal directions
+
+Bischop: Rogue, can jump through pieces and penetrate lower fraction tiles, hide type , different levels
+
+Rook: Horizon, double the number of tile diameter the piece can see
+
+Knight: Dragon, can kill a piece when jumping over it, also jumps over fractioned tiles and can kill pieces 1 fraction deep
+
+King: Command, change the head position of the wall of pawns surrounding the king, if the king has no wall command shifts the balance of his influence
+
+Queen: None, strong enough already bitch
+
+Interface
+---------------------------
+
+left are the cooldown and turns active of a special move as well as the range and the piece type
+
+right on top are team lives and down is the turn, when the bar is vertical it's your turn to move
+
+Logic
+-----------------------
+The smaller the tile, the shorter the turns are, faster turn-rate.
+once a certain threshold is reached the game's no longer turn-based but real-time
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

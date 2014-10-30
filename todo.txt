@@ -1,129 +1,80 @@
 Coding
-
-
-general: implement as moba, with as much parameters as possible
-simple but highly parametric
--NO AI
--no mouse control, keyboard only is more elegant, like playing a piano, a controller is of course possible
-
-
 -add gui to server code (2 buttons start/stop)
 -send movement messages between several clients connected to server
 -simple client server
 -simple working online multiplayer, using ip adresses
--refactoring decision mapping
 
 
 -todo
 -ooit nog is cooldown dubbelchecken
--check if team makes a decision every main-turn
+
 -seperate piece logic and model
 
 
+-king command, implement to check when wall size 0, change balance of piece instead of wallheadpos
+-piece not added after a few new pieces, when pressed only 1 execution but on hold cooldown increases
+-movement of pieces needs to be debugged
+-------------
+-reintroduce movement range to be able to use different attack according to range
+-
+-make a guibuilder for each piece type in config
+-every move should also have it's own cooldown config, relative to range or not, or cooldown at all
+-save all info about decisions in a model
+-use these models in config to build all mappings
 
--pawn movement WIP, check if all funcionality of pieces works
+-make letters and numbers, draw key char on tile on which a move can be made
 
--cooldown is nog steeds soms verkeerd
--tile enter mapping is not correct for -> to lower fraction
+-load all icons in the res file automaticallt and name objects based on file name
+---------------------
 -test
+
 <-------------
 
 -back to networking
 
--multtiple player functionality, killing, switching
--when killing piece check if occupied by other player
 -test
 -codecheck, codeclean, small refactoring, still to be decided which
--dynamic gui implemnts recursive refresh method that will be called after every time a decision is made or turn changes
+
+
 -test
--buttonmapping with config files
--draw grid for letters and numbers
+-buttonmapping with gui
+-chat box that shows "Gaviali pp black rook left took Peter pp white pawn apple", elk stuk krijgt een unieke naame
 -activate special decision once on lower fractions
--implement king command
--implement bischop rogue
--gui: basic: turn, balance, absfraction, cooldown of decision and switch(every piece can make 1 special decision and a switch),
--remove string mapping of arrays, use arrays. tostring method
--cache absfraction, absposition ,.. in tile
--load all icons in the res file automaticallt
+-check if team makes a decision every main-turn
+
+
 
 multiple players of same team-> switching
 
 -verhaal afschrijven
--test first round, all funcionality
--test second round performance and gameplay, games has to be downloadable from site
+
+
 -once beta is complete make site
--maybe create a static mapping with piecetype and side to piece models
--for each piece unique mapping allowed
--make sure that cooldown is proportioned to tile fracioning of the tile it's standing on
+
+
 -not a minimum turn -time will be enforced but a maximum fractioning of the turn-time, is about the same. this smallest fraction is of course not absolute
 but the turn -time won't be further fractioned, and movement becomes real-time.
 -the cooldown is saved in absolute amount of turns on the smalles fraction: formula: smallestfraction/fraction * turnsactive * range * weight
--after every turn passed on the smallest fraction the cooldown is lowered
--watch out for cooldown milking, that is that the player cools down on a low fraction and just before the turns change on the low fraction it goes up to a lower fraction
-to also collect this cooldwon. To counter this a cooldown is only reduced after a full turn on the same fraction, so after the second turnchange on the same fraction
-
--create standard constructors for piece models
-
--refactor renderers, use bitgrid instead of subclasses
-
-
--when on lowest fraction and tileview is so high that all tiles can be seen, lower tileview so that just all tiles can be seen
--when reaching a turn-time that is too small to play on ( min is 1/60 second, 1 game loop) change the game to real-time: don't lock anymore
--keep in mind for an offline mode, to debug
--there is only 1 range
 
 -settings gui: choose side, turn time, start game, join server...
+
 -implement that when 2 pieces of same color come on same tile-> fraction
+
 -when 2 pieces go "through" each other the tile where they meet is fractioned with a number that is as big as needed to complete the move
 and avoid collision eg they are on neighbour tiles and move in towards each other with 1 tile, the fraction is 2 tiles 
 they move toward each other with 3 tiles -> the fraction is 8 tiles always do roundtonearestpowerof2(2*tilesleft to move)
 change: only fraction if the sum of the remaining moves when the pieces meet is a power of 2. if not the piece can't pass through each other, so they don't move.
 
 
-
-
--if 2 piece of opposite side come on same tile, delete
-
--implenteer dat eens de speler zo'n hoge fractioning bereikt dat het realtime wordt dat alles van cooldowns vermenigvuldigt wordt met minTurnTime
-Behalve voor de beweging deze heeft geen cooldown meer, maar dan moet ook een deel van de mapping van de keys verandert worden en dan moet hold niet 
-meer toegelaten zijn voor movement registratie;
-
-
-
 -implement change of piece with core(maybe keep in mind that different ways of switching piece should be possible eg nearest, strongest, furthest,...), not indefinetly
--cooldown of switch is equal to number of tiles in gaussian distance
-
-
-
-
 
 -een pion kan maar 1 beweging, als er een stuk in aanvals richting is, dan zal deze met een beweging dit stuk automatisch aanvallen, als er 2
 stukke aangevallen kunnen worden, dan wordt het sterkste gedoodt
 
-
--metaactions die moeten werken, reduce view, movement, switch piece, change turn
--alle piece types moeten werken
-
--teken stukken ook met bitgrid
-
--refactoring all those methods in actionlogic would be a good idea: 
-use decision weight, balance, model side to get the value, and the saved valueobjects to execute the correct getter or setter
-remove ugly Method objects and work without enums for actions
--make a destinction between piece specific decision and not piece specific
-- a decision only execute 1 method so far, maybe remove the possibility to execute multiple methods?
--piece movement types: orthog, diagonal and knight
--map movement types to piece types
--de bewegings acties uitbreiden met string, string gebruiken om de int[][] met directions op the halen, veel schaalbaarder
-
--decision work ubt should be done better
 make a queue on which a detected decision is noted
 the piecemodel then clear this queue on every metaloop
 sketch this first before trying to change
-opsplitsen van bestaande code van makedecision bij player
-zodat het gemakkelijker is om multipayer decisions te maken
 
-
--all piece types should work
 
 - een website met allemaal competitieve 2d spellen zoals metachess en andere. In die site zijn 3 reeksen, regular, amateur, professional. De amateur krijgt grafische customisatie van de kern
 , color mapping. Pro krijgt toegang tot training(confusion, visual, sound), bootcamp. also sponsor account: pay and manage teams of player. Every account has a different fee.
@@ -131,8 +82,6 @@ Regular is free, amateur is the fee low so that when you play and win enough you
 naam: www.aregameswith.tk  -> betekenis: where, where, where are games with telekenisis.
 op deze website zullen deze spellen nooit veranderen. alleen de parameters binnen de spellen kunnen wijzigen om de gameplay haarfijn af te stellenS
 
-
--to implement mouse control: cast mouse x and y to an i and j in the tileview, us this i and j to "move" from the player's tile to the pointed tile
 
 -implement the watcher with a simple chess AI, the watcher only knows chess rules,AI for The Two Players(chess engine)
 
@@ -142,9 +91,6 @@ add gui:
 -auto-adapt gui:pas aantal tegels in gui aan, aan de ruimte die het krijgt: altijd 8 in de grootste maat (hoogte, breedte) en dan x in de andere maat, met x anderemaat/(maat/8) ,
 dus eigenlijk aantal tegels dat er andere maat bij zouden passen
 
--maak gui pas zicht baar vanaf een bepaalde verhouding hoogte/ breedte gui >= aantal kolommen/rijen gui, zodat elke tegel in de gui goed zichtbaar is
--de gebruiker kan het aantal rijen en kolommen dan manueel aanpassen
--de gebruiker zou ook moeten kunnen kiezen wat er in de gui getoond wordt
 -TEST!!!! let people play 1vs1, 2vs2, 4vs2, 1vs4,.... let them note what they think about the game how they would improve
 what they like/dislike about it,.... 
 -alles wat in een editor klasse is geïmplementeerd zou in feite aanpasbaar moeten zijn in een gui die altijd aanspreekbaar moet zijn,
@@ -161,71 +107,35 @@ splis code:in pieceextended model staat te veel logica, dat moet allemaal in een
 -make a method division of ints in metaUtil
 -centreer de guitile numbers, dat is mooier
 
--eventually the player should have list from which he can choose decisions
 -when pawns form formations they unlock or strengthen!(more reach, or more weight) decisions
--a decision (MetaAction) should have a "weight" variable, and a "reach" (reach should be a number of tiles, then you can either reach in a line(1 direction) or a circle(all directions), but the same amount of tiles
--"reach" of decision is changed with number buttons, just like range of movement, if a decision is made and the reach is > 1 then it's a ranged decision
--split logic between metaAction activity and turnsactive
-
-
--metaactions die moeten werken, fixed tileview, max tileview, max movement , fixed movement, max decision range, fixed decision range
--extra parameter for decision , fixate (set fixed for var param)or plafonate (macximum fixeren) or reduce (normal, works with balance)
--finish gui
-
--finish all metaActions:
 
 things like rangeup1, 2, 4,... will be 1 action rangeup but the variable will be changeable of course through points, points which will be given through achievements
 like: reaching the other side eg +2 points, killing a piece of x lives + 2*x points, finding the gray pawn +10 pointsn,.....
 
 
--todo: griddrawer: save drawing, reset (load last), load drawing, edit nr of columns,rows
-
-
--add UI to choose button config
 -ooit is een doc schrijven + maak van die doc een wiskundig manifesto waarin abstract alle regels van het spel beschreven staan
 
 
--in gui moet er een mogelijkheid zijn: fillGUI die de ruimte optimaal benut: zo veel mogelijk gui tiles toont in de gekregen guiruimte
-
 find a better name for core-> axis, better name MetaAction->decision
--use gray only for the gray pawn, or everything that has nothing to do with "pure" chess, that is not bounded by the rules of chess!!!!->metactions
+-use gray only for the gray pawn, or everything that has nothing to do with "pure" chess, that is not bounded by the rules of chess!
 -tileextendedmodel hier de logica opsplitsen
-
-
-
 
 -in het kickstarter project laat iedereen stemmen door 1 euro te doneren voor een bepaalde uitbreiding van het prototype
 of 5 euro voor een server met het spel en die krijgen dan een account. Iemand die 7 of meer stemmen uitbrengt krijgt ook een account
 -dit account geldt op de site voor al mijn komende projecten
 
-
-
--check if diag mov works correct
--option to turn off specatt's
-
-
--if something is implemented in todo and counts as a rule add to rules, this will be the base of manual
--uniform use of keys for all pieces, restrict to define different piece style inputs
--implement mouse control
 -implement simple turn based rythm music 
--N
--GUI: shows remaining lives,  tile depth, tile fractioning/abs fractioning, specatt's ,..., show if move is already made, show how long you have to wait until next move
 
 -make simple single player, where with a working 1 vs CPU. begin met origin of war
--the player can switch between peices (with it's core) 
 
 -bass toon elke keer een beurt voorbij is, een beetje geluid in integreren
 -een passerende stukken (ze springen langs elkaar ipv op elkaar) geeft geluid van passerende trienen.
 
 
--sync board changes (by specatt)
-
 -implement some simple game modes, to test gameplay:
 -1 vs 1, each has a "super"-piece, or a kind of switch between pieces is possible like fifa
 -2 vs 2
 -....-> maybe a setting GUI where all options for gamemodes are available to change?
-
--recursive turn time, done. But due to the exponential increase decrease it becomes very fast unplayable, maybe changing the rules a bit? fraction the time by level and not by fraction
 
 -add the story to the game, try to finish this part, so that this can be used as prototype on the kickstarter project
 tell the story from the document until you reach the point where the piece discover their core
@@ -271,16 +181,11 @@ ergens op een willekeurig tegel op een willekeurige, misschien nog niet bestaand
 
 
 extra:
-{
+
 -native analog controller support
-from a dream
--extra pieces: dragon/snake (s-movement), fox (sneaky) ,...
--maybe add a specatt like the ability to change into animals
--design numeric GUI + Design gui icons
--code mouse control, show possible moves with a cross on tile, if clicked on it the piece will move there
--> this can bes used to play on the same computer, one player on the keyboard one with the mouse, mutliple screens, splitscreen like lego ps3?
--recode queen and king control, such that they only move when a key is released, and diag mov is done when an appriopriate key is pressed while realeasing
+
 -inverse control: use numpad to move and numbers on keyboard for values
+
 recode the board
 -new implementation of the boardlogic
 -change floor implementation from recursive to iterative with arrays (a finite dimensional array) 
@@ -292,41 +197,12 @@ Object[][] test  = new Object[8][8];
 -to check if tile is occupied, don't save in a tile. 
 rather use an array of coordinates and an array of fractions for drawin. the recursive properties of the tiles will handle the movement
 }
--finish special attacks
-
--implement AI (finish)
-
--> under here maybe not, keep meta chess a moba, implement new engine and write the rpg for that
--start design rpg world (crude)
-
--implement world (crude)
-
--make world online (with own server/client code, optimize prvious implementation)
-
--integrate flexible(variable) chess battle game inside world
-
--refine world, add quest, npc's, buildings?, enemies (AI)
-
--make a html5 client, to play the game in a browser
-
--make an android app
-
--effects:
-
--camera effect (make a slow transition)
--add shadow 
--3D rendering?
--3D viewing?
-
-Cleaning
--duplicate code in controllers
--make floor a singleton
--test effecienty of both board implementations
--tile shouldn't keep width and x, only the first size and it's absolute fraction and it's relative i and j pos
--A piece also shouldn't save it's tile.
 
 
 New project
+
+snake of time
+
 
 cRayOn
 
@@ -359,3 +235,9 @@ and lwjgl for graphics
 
 use the smilhelm world(triangle) for 3 factions
 use confuse for quests in the smilhelm story line
+
+turn snake
+...
+
+slash the line
+...

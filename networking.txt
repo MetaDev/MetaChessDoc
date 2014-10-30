@@ -24,7 +24,7 @@ dumb server
 The system clock should be equal on all pc's see doc of System.getTimeMillis()
 So this won't be synced
 
-the initial state is on every client the same so only changes have to communicated
+the initial state with the position of the pieces and the fraction of the board
 
 In the game loop there will be checked for packages to receive
 
@@ -46,6 +46,9 @@ messages:
 	welcome::3
 //client is ready to begin
 -ready
+//the server decides a sequence of random fractions of the board
+//and random positions for the pieces
+-init::
 //all connected are ready
 //the client is assaigned an initial (random) pawn piece
 -start::clientid::clientposition::player2id::player2position::...
